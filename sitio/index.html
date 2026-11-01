@@ -1,7 +1,179 @@
 <!doctype html>
-<html lang="es">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Muy pronto · Junta de accionistas</title>
-<style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#1C2B44;color:#F3EFE6;font:18px/1.4 system-ui,sans-serif;text-align:center;padding:24px}h1{color:#A8894A;letter-spacing:.04em}small{display:block;margin-top:40px;color:#8A8781;font-size:12px}</style></head>
-<body><main><h1>Muy pronto</h1><p>El registro a la junta de accionistas de Waystar RoyCo se está construyendo con Claude.</p>
-<small>Material de ficción con fines educativos. Personajes y empresas de la serie Succession (HBO). Sin afiliación con HBO ni con sus titulares.</small></main></body>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Registro a la junta anual de accionistas · Waystar RoyCo</title>
+<meta name="description" content="Regístrese a la junta anual de accionistas de Waystar RoyCo, en persona o en línea. Material de ficción con fines educativos.">
+<meta name="theme-color" content="#1C2B44">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+<a class="saltar" href="#registro">Ir al registro</a>
+
+<header class="portada" id="inicio">
+  <div class="portada__marca">
+    <span class="marca__nombre">Waystar RoyCo</span>
+    <span class="marca__linea">Relación con Inversionistas</span>
+  </div>
+
+  <div class="escena" id="escena">
+    <div class="credencial" id="credencial">
+      <img id="img-credencial" src="img/credencial-persona.webp" width="800" height="500"
+           alt="Credencial de accionista, modalidad En persona, de la junta anual de Waystar RoyCo" fetchpriority="high">
+      <span class="brillo" aria-hidden="true"></span>
+    </div>
+  </div>
+  <p class="pista" id="pista" hidden>Mueva el teléfono para inclinar la credencial</p>
+
+  <div class="portada__texto">
+    <p class="sobretitulo">Convocatoria a accionistas</p>
+    <h1>Junta anual de accionistas</h1>
+    <p class="fecha" id="fecha-junta" aria-live="polite">Confirmando la fecha…</p>
+    <a class="boton" href="#registro">Registrarme</a>
+    <p class="cierre-nota" id="cierre-junta"></p>
+  </div>
+</header>
+
+<main>
+  <section class="franja" aria-labelledby="t-cuenta">
+    <div class="envoltura">
+      <h2 id="t-cuenta" class="mini">Faltan para la junta</h2>
+      <div class="cuenta" id="cuenta" role="timer" aria-live="off">
+        <div><b id="c-d">--</b><span>días</span></div>
+        <div><b id="c-h">--</b><span>horas</span></div>
+        <div><b id="c-m">--</b><span>minutos</span></div>
+        <div><b id="c-s">--</b><span>segundos</span></div>
+      </div>
+      <p class="contador" id="contador-texto" aria-live="polite">Ya hay <strong id="contador-n">…</strong> accionistas registrados</p>
+    </div>
+  </section>
+
+  <section class="seccion" aria-labelledby="t-orden">
+    <div class="envoltura">
+      <p class="sobretitulo oscuro">Orden del día</p>
+      <h2 id="t-orden">Cuatro puntos, en este orden</h2>
+      <ol class="orden">
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3Z"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4M9 21h6"/></svg>
+          <div><b>Mensaje del presidente del consejo</b><span>Apertura de la junta.</span></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6V3Z"/><path d="M15 3v4h4M9 12h7M9 16h7"/></svg>
+          <div><b>Informe del año</b><span>Lo que la empresa presenta a sus accionistas.</span></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13l4 4L20 6"/><path d="M4 21h16"/></svg>
+          <div><b>Elección de consejeros</b><span>Votación de los accionistas.</span></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5Z"/><path d="M8 9h8M8 12h5"/></svg>
+          <div><b>Preguntas de los accionistas</b><span>Una por persona, de hasta 280 caracteres.</span></div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="seccion oscura" aria-labelledby="t-modalidad">
+    <div class="envoltura">
+      <p class="sobretitulo">Modalidad</p>
+      <h2 id="t-modalidad">Elija cómo asistir</h2>
+      <div class="selector" role="group" aria-label="Modalidad de asistencia">
+        <button type="button" class="sel activo" data-mod="En persona" aria-pressed="true">En persona</button>
+        <button type="button" class="sel" data-mod="En línea" aria-pressed="false">En línea</button>
+      </div>
+      <p class="explica" id="explica" aria-live="polite"></p>
+      <img class="sala" src="img/sala.webp" width="900" height="500" loading="lazy"
+           alt="Ilustración del auditorio: escenario con el letrero de la junta anual y filas de asientos">
+    </div>
+  </section>
+
+  <section class="seccion" id="registro" aria-labelledby="t-registro">
+    <div class="envoltura angosta">
+      <p class="sobretitulo oscuro">Registro</p>
+      <h2 id="t-registro">Regístrese a la junta</h2>
+      <p class="aviso-cierre" id="aviso-cierre"></p>
+
+      <form id="forma" novalidate>
+        <label class="campo">
+          <span>Nombre completo</span>
+          <input type="text" name="nombre" id="nombre" autocomplete="name" minlength="2" maxlength="80" required>
+          <small class="error" id="e-nombre" role="alert"></small>
+        </label>
+        <label class="campo">
+          <span>Correo electrónico</span>
+          <input type="email" name="correo" id="correo" autocomplete="email" inputmode="email" maxlength="120" required>
+          <small class="error" id="e-correo" role="alert"></small>
+        </label>
+        <fieldset class="campo">
+          <legend>Modalidad</legend>
+          <div class="radios">
+            <label><input type="radio" name="modalidad" value="En persona" checked><span>En persona</span></label>
+            <label><input type="radio" name="modalidad" value="En línea"><span>En línea</span></label>
+          </div>
+        </fieldset>
+        <label class="campo">
+          <span>Su pregunta para el consejo <em>(opcional)</em></span>
+          <textarea name="pregunta" id="pregunta" rows="4" maxlength="280"></textarea>
+          <small class="cuenta-car"><span id="car-n">0</span> / 280</small>
+        </label>
+        <p class="error general" id="e-general" role="alert"></p>
+        <button class="boton grande" type="submit" id="enviar">Registrarme</button>
+        <p class="nota">Al registrarse acepta el aviso de privacidad que aparece más abajo.</p>
+      </form>
+
+      <div class="exito" id="exito" hidden tabindex="-1">
+        <div class="sello" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+        <h3>Su registro quedó</h3>
+        <p class="exito__nombre" id="exito-nombre"></p>
+        <p>En unos minutos le llega su confirmación.</p>
+      </div>
+      <div class="festejo" id="festejo" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <section class="seccion crema" aria-labelledby="t-faq">
+    <div class="envoltura angosta">
+      <p class="sobretitulo oscuro">Preguntas frecuentes</p>
+      <h2 id="t-faq">Lo que conviene saber</h2>
+      <details>
+        <summary>¿Cuándo y a qué hora es la junta?</summary>
+        <p id="faq-fecha">La fecha se confirma al cargar la página. La hora es la de Nueva York.</p>
+      </details>
+      <details>
+        <summary>¿Cómo entro a la junta?</summary>
+        <p>En persona, con la credencial que llega por correo, en el auditorio de Waystar RoyCo, en Nueva York. En línea, por una transmisión en vivo: su liga personal llega por correo un día antes.</p>
+      </details>
+      <details>
+        <summary>¿Hasta cuándo puedo registrarme?</summary>
+        <p id="faq-cierre">El registro cierra la víspera de la junta a las 18:00 h, hora de Nueva York.</p>
+      </details>
+      <details>
+        <summary>¿Qué pasa con mi pregunta?</summary>
+        <p>Cada persona puede mandar una, de máximo 280 caracteres. El consejo contesta en la junta las que alcancen. Las demás se contestan por correo.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="seccion" id="privacidad" aria-labelledby="t-priv">
+    <div class="envoltura angosta">
+      <h2 id="t-priv" class="chico">Aviso de privacidad</h2>
+      <p>Sus datos los recibe Waystar RoyCo · Relación con Inversionistas (empresa de práctica). Se usan para confirmar su registro y enviarle su acceso a la junta. No se comparten con nadie. Para darse de baja, responda "baja" al correo de confirmación.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="pie">
+  <div class="envoltura">
+    <p class="pie__marca">Waystar RoyCo · Relación con Inversionistas</p>
+    <p class="leyenda">Material de ficción con fines educativos. Personajes y empresas de la serie Succession (HBO). Sin afiliación con HBO ni con sus titulares.</p>
+  </div>
+</footer>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
 </html>
